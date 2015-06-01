@@ -1,0 +1,9 @@
+<h3>Dessert Menu</h3>
+
+<ul>
+{% for dessert in desserts %}
+    <li>{{ dessert.name }} - ${{ dessert.price }}, {{ dessert.calories }} calories
+{% endfor %}
+</ul>
+
+<a href="/add">Add Item</a>

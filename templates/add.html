@@ -1,0 +1,27 @@
+<h3>Add Dessert</h3>
+
+{% if dessert %}
+
+<p><strong>{{dessert.name}}</strong> successfully created! Add another below.</p>
+<p><a href="/">Back to Dessert List</a></p>
+
+{% endif %}
+
+
+<!-- The form action and method correspond to a Flask route -->
+<form action="/add" method="POST">
+
+<label for="name_id">Name</label>
+<input id="name_id" name="name_field" type="text" />
+
+<label for="price_id">Price</label>
+<input id="price_id" name="price_field" type="text" size="4" />
+
+<label for="cals_id">Calories</label>
+<input id="cals_id" name="cals_field" type="text" size="4" />
+
+
+<!-- We need a submit button to submit a form! -->
+<input type="submit" value="Add"/>
+
+</form>
