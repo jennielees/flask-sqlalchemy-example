@@ -1,27 +1,61 @@
-<h3>Add Dessert</h3>
+{% include 'header.html' %}
 
-{% if dessert %}
+<body>
 
-<p><strong>{{dessert.name}}</strong> successfully created! Add another below.</p>
-<p><a href="/">Back to Dessert List</a></p>
-
-{% endif %}
+    <div class="container">
 
 
-<!-- The form action and method correspond to a Flask route -->
-<form action="/add" method="POST">
+    <h3>Add Dessert</h3>
 
-<label for="name_id">Name</label>
-<input id="name_id" name="name_field" type="text" />
+    {% if dessert %}
 
-<label for="price_id">Price</label>
-<input id="price_id" name="price_field" type="text" size="4" />
+    <!-- http://getbootstrap.com/components/#alerts -->
 
-<label for="cals_id">Calories</label>
-<input id="cals_id" name="cals_field" type="text" size="4" />
+    <div class="alert alert-success" role="alert">
+
+        <p><strong>{{dessert.name}}</strong> successfully created! Add another below.</p>
+        <p><a href="/">Back to Dessert List</a></p>
+
+    </div>
+
+    {% endif %}
 
 
-<!-- We need a submit button to submit a form! -->
-<input type="submit" value="Add"/>
+    <!-- Bootstrap: http://getbootstrap.com/css/#forms -->
 
-</form>
+    <!-- The form action and method correspond to a Flask route -->
+    <form action="/add" method="POST" class="form-inline">
+
+    <div class="form-group">
+
+        <label for="name_id">Name</label>
+        <input  class="form-control" id="name_id" name="name_field" type="text" />
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="price_id">Price</label>
+        <input class="form-control" id="price_id" name="price_field" type="text" size="4" />
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="cals_id">Calories</label>
+        <input class="form-control" id="cals_id" name="cals_field" type="text" size="4" />
+
+    </div>
+
+
+
+    <!-- We need a submit button to submit a form! -->
+    <input type="submit" value="Add" class="btn btn-success"/>
+
+
+    </form>
+
+
+    </div>
+
+</body>

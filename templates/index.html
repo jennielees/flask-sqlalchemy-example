@@ -1,9 +1,21 @@
-<h3>Dessert Menu</h3>
+{% include 'header.html' %}
 
-<ul>
-{% for dessert in desserts %}
-    <li>{{ dessert.name }} - ${{ dessert.price }}, {{ dessert.calories }} calories
-{% endfor %}
-</ul>
+<body>
 
-<a href="/add">Add Item</a>
+    <div class="container">
+
+
+    <h3>Dessert Menu</h3>
+
+    <ul>
+    {% for dessert in desserts %}
+        <li>{{ dessert.name }} - ${{ dessert.price }}, {{ dessert.calories }} calories</li>
+    {% endfor %}
+    </ul>
+
+    <a href="/add" class="btn btn-success">Add Item</a>
+
+
+    </div>
+
+</body>
