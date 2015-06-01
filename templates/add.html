@@ -20,6 +20,16 @@
 
     {% endif %}
 
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+
+    An error occurred trying to create your dessert:
+
+    {{ error }}
+
+    </div>
+    {% endif %}
+
 
     <!-- Bootstrap: http://getbootstrap.com/css/#forms -->
 

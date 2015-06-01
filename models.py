@@ -34,7 +34,16 @@ class Menu(db.Model):
 
 def create_dessert(new_name, new_price, new_calories):
     # Create a dessert with the provided input.
-    # At first, we will trust the user.
+
+    # We need every piece of input to be provided.
+
+    # Can you think of other ways to write this following check?
+    if new_name is None or new_price is None or new_calories is None:
+        raise Exception("Need name, price and calories!")
+
+    # They can also be empty strings if submitted from a form
+    if new_name == '' or new_price == '' or new_calories == '':
+        raise Exception("Need name, price and calories!")
 
     # This line maps to line 16 above (the Dessert.__init__ method)
     dessert = Dessert(new_name, new_price, new_calories)

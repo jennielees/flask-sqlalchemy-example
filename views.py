@@ -29,5 +29,14 @@ def add():
     dessert_price = request.form.get('price_field')
     dessert_cals = request.form.get('cals_field')
 
-    dessert = create_dessert(dessert_name, dessert_price, dessert_cals)
-    return render_template('add.html', dessert=dessert)
+    # Now we are checking the input in create_dessert, we need to handle
+    # the Exception that might happen here.
+
+    # Wrap the thing we're trying to do in a 'try' block:
+    try:
+        dessert = create_dessert(dessert_name, dessert_price, dessert_cals)
+        return render_template('add.html', dessert=dessert)
+    except Exception as e:
+        # Oh no, something went wrong!
+        # We can access the error message via e.message:
+        return render_template('add.html', error=e.message)
