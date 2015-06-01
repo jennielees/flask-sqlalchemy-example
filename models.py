@@ -52,9 +52,34 @@ def create_dessert(new_name, new_price, new_calories):
     db.session.add(dessert)
 
     # Save all pending changes to the database
-    db.session.commit()
 
-    return dessert
+    try:
+        db.session.commit()
+        return dessert
+    except:
+        # If something went wrong, explicitly roll back the database
+        db.session.rollback()
+
+
+def delete_dessert(id):
+
+    dessert = Dessert.query.get(id)
+
+    if dessert:
+        # We store the name before deleting it, because we can't access it
+        # afterwards.
+        dessert_name = dessert.name
+        db.session.delete(dessert)
+
+        try:
+            db.session.commit()
+            return "Dessert {} deleted".format(dessert_name)
+        except:
+            # If something went wrong, explicitly roll back the database
+            db.session.rollback()
+            return "Something went wrong"
+    else:
+        return "Dessert not found"
 
 
 if __name__ == "__main__":

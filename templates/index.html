@@ -7,9 +7,18 @@
 
     <h3>Dessert Menu</h3>
 
+    {% if message %}
+    <div class="alert alert-info" role="alert">
+    
+    {{ message }}
+
+    </div>
+    {% endif %}
+
+
     <ul>
     {% for dessert in desserts %}
-        <li>{{ dessert.name }} - ${{ dessert.price }}, {{ dessert.calories }} calories</li>
+        <li><a href="/desserts/{{ dessert.id }}">{{ dessert.name }}</a> - ${{ dessert.price }}, {{ dessert.calories }} calories</li>
     {% endfor %}
     </ul>
 

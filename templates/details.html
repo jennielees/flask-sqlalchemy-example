@@ -1,0 +1,23 @@
+{% include 'header.html' %}
+
+<body>
+
+    <div class="container">
+
+    <h3>Dessert Details</h3>
+
+    <h4>{{ dessert.name }}</h4>
+
+    <p>Price: ${{ dessert.price }}</p>
+
+    <p>Calories: {{ dessert.calories }}</p>
+
+    <p>Calories per dollar: {{ dessert.calories_per_dollar() }}</p>
+
+
+    <a href="/delete/{{ dessert.id }}" class="btn btn-danger">Delete {{ dessert.name }}</a>
+
+
+    </div>
+
+</body>

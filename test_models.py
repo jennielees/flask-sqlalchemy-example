@@ -1,6 +1,6 @@
 import traceback
 
-from models import db, create_dessert
+from models import db, create_dessert, delete_dessert
 
 
 def check_test(func):
@@ -83,6 +83,24 @@ def test_create_dessert_missing_data():
 
     # Are there other values we should test for? What about a sensible
     # range for each item?
+
+
+@check_test
+def test_delete_dessert():
+    dessert = create_dessert('test', 0, 0)
+
+    message = delete_dessert(dessert.id)
+
+    assert message == 'Dessert test deleted'
+
+
+@check_test
+def test_delete_nonexistent_dessert():
+    random_id = 394812018  # I'm pretty sure a dessert by this ID doesn't exist
+
+    message = delete_dessert(random_id)
+
+    assert message == 'Dessert not found'
 
 
 if __name__ == "__main__":

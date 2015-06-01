@@ -1,6 +1,6 @@
 from flask import render_template, request
 
-from models import Dessert, create_dessert
+from models import Dessert, create_dessert, delete_dessert
 from app import app
 
 
@@ -40,3 +40,21 @@ def add():
         # Oh no, something went wrong!
         # We can access the error message via e.message:
         return render_template('add.html', error=e.message)
+
+
+@app.route('/desserts/<id>')
+def view_dessert(id):
+
+    # We could define this inside its own function but it's simple enough
+    # that we don't really need to.
+    dessert = Dessert.query.get(id)
+
+    return render_template('details.html', dessert=dessert)
+
+
+@app.route('/delete/<id>')
+def delete(id):
+
+    message = delete_dessert(id)
+
+    return index()  # Look at the URL bar when you do this. What happens?
