@@ -17,4 +17,4 @@ if __name__ == "__main__":
 
     from views import *
 
-    app.run(debug=True, port=8080)
+    app.run(debug=True)
