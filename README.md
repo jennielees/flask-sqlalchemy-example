@@ -25,3 +25,10 @@ $ python app.py
 ```
 
 Visit [http://localhost:5000/](http://localhost:5000/) in your browser to see the results.
+
+
+### Running Tests
+
+```
+python test_models.py
+```
