@@ -13,6 +13,9 @@ class Dessert(db.Model):
     price = db.Column(db.Float)
     calories = db.Column(db.Integer)
 
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship("User", backref="desserts")
+
     def __init__(self, name, price, calories):
         self.name = name
         self.price = price
@@ -30,6 +33,22 @@ class Menu(db.Model):
 
     def __init__(self, name):
         self.name = name
+
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+    email = db.Column(db.String(250))
+    name = db.Column(db.String(100))
+    avatar = db.Column(db.String(250))
+
+    def __init__(self, username, password, email, name, avatar):
+        self.username = username
+        self.password = password
+        self.email = email
+        self.name = name
+        self.avatar = avatar
 
 
 def create_dessert(new_name, new_price, new_calories):
