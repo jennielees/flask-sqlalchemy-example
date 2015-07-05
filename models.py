@@ -1,4 +1,12 @@
-from app import db
+from app import app, db
+
+from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
+
+migrate = Migrate(app, db)
+
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
 
 class Dessert(db.Model):
@@ -12,6 +20,7 @@ class Dessert(db.Model):
     name = db.Column(db.String(100))
     price = db.Column(db.Float)
     calories = db.Column(db.Integer)
+    doilikeit = db.Column(db.Boolean)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship("User", backref="desserts")
@@ -102,8 +111,4 @@ def delete_dessert(id):
 
 
 if __name__ == "__main__":
-
-    # Run this file directly to create the database tables.
-    print "Creating database tables..."
-    db.create_all()
-    print "Done!"
+    manager.run()
